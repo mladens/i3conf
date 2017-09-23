@@ -8,6 +8,8 @@
 #disable title bar
 for_window [class="^.*"] border pixel 1 
 
+exec xsetroot -solid "#3f4959"
+
 
 # i3 config file (v4)
 #
@@ -46,7 +48,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+d exec "rofi -modi run,window,drun,ssh -show run"
+bindsym $mod+d exec "rofi -modi drun,window,run,ssh -show drun"
 
 # change focus
 bindsym $mod+j focus left
@@ -159,6 +161,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+    	font pango:DejaVu Sans Mono 8 
 }
 exec --no-startup-id nm-applet
 exec  xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Palm Detection" 1
@@ -185,3 +189,5 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 client.background       #ffffff
 
 popup_during_fullscreen smart
+
+bindsym $Mod+t exec "ffmpeg -f x11grab -video_size $(xrandr | grep 'current' | sed -E 's/.*current\s([0-9]+)\sx\s([0-9]+).*/\1x\2/') -y -i $DISPLAY -filter_complex 'boxblur=5:1' -vframes 1 /tmp/screen.png -loglevel quiet; i3lock -i /tmp/screen.png"
