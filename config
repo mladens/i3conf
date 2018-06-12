@@ -8,7 +8,7 @@
 #disable title bar
 for_window [class="^.*"] border pixel 1 
 
-exec xsetroot -solid "#3f4959"
+exec xsetroot -solid "#0a4356"
 
 
 # i3 config file (v4)
@@ -38,7 +38,7 @@ hide_edge_borders both
 
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -49,6 +49,9 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 bindsym $mod+d exec "rofi -modi drun,window,run,ssh -show drun"
+
+bindsym $mod+bracketleft move workspace to output left
+bindsym $mod+bracketright move workspace to output right
 
 # change focus
 bindsym $mod+j focus left
@@ -190,4 +193,7 @@ client.background       #ffffff
 
 popup_during_fullscreen smart
 
-bindsym $Mod+t exec "ffmpeg -f x11grab -video_size $(xrandr | grep 'current' | sed -E 's/.*current\s([0-9]+)\sx\s([0-9]+).*/\1x\2/') -y -i $DISPLAY -filter_complex 'boxblur=5:1' -vframes 1 /tmp/screen.png -loglevel quiet; i3lock -i /tmp/screen.png"
+bindsym $Mod+t exec "ffmpeg -f x11grab -video_size $(xrandr | grep 'current' | sed -E 's/.*current\s([0-9]+)\sx\s([0-9]+).*/\1x\2/') -y -i $DISPLAY -filter_complex 'boxblur=7:1' -vframes 1 /tmp/screen.png -loglevel quiet; i3lock -i /tmp/screen.png"
+bindsym $mod+m exec gnome-terminal -e mc
+
+exec gsettings set org.nemo.desktop show-desktop-icons false
