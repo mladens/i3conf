@@ -45,7 +45,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec "rofi -modi drun,ssh,window,run -show drun"
 
-
+bindsym Print exec /usr/bin/flameshot gui
 bindsym $mod+bracketleft move workspace to output left
 bindsym $mod+bracketright move workspace to output right
 
@@ -211,7 +211,7 @@ bar {
     status_command    i3status
     position          bottom 
     workspace_buttons yes
-    tray_output       primary 
+#    tray_output       primary 
 
     font pango:DejaVu Sans Mono 10
     
