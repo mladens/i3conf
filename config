@@ -42,6 +42,7 @@ bindsym $mod+Return exec gnome-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
+bindsym $mod+n move workspace to output top 
 
 bindsym $mod+d exec "rofi -modi drun,ssh,window,run -show drun"
 
@@ -213,7 +214,7 @@ bar {
     workspace_buttons yes
 #    tray_output       primary 
 
-    font pango:DejaVu Sans Mono 10
+    font pango:DejaVu Sans Mono 12 
     
     colors {
         background #202830
